@@ -1,0 +1,46 @@
+{
+  "data_path": "vertebral_column.csv",
+  "data_sha256": "648335343fa5e44ea32efbaca7ac2d05f7c3fcbec6b8e716396ddd0b3093657c",
+  "n_rounds": 5,
+  "base_seed": 42,
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "train_ratio": 0.6,
+  "val_ratio": 0.2,
+  "test_ratio": 0.2,
+  "classifier": {
+    "n_neighbors": 5,
+    "weights": "uniform",
+    "metric": "euclidean",
+    "scale": true
+  },
+  "selection": {
+    "uses": "somente o conjunto de treino",
+    "cv_folds": 5,
+    "filter": "SelectKBest(f_classif); k por F1 macro em CV estratificada no treino",
+    "wrapper": "forward selection com o próprio KNN; tamanho por F1 macro em CV estratificada no treino",
+    "embedded": "RandomForest(200 árvores) + SelectFromModel(threshold='mean')",
+    "tie_break": "menor número de atributos"
+  },
+  "positive_class": 1,
+  "positive_class_name": "anormal",
+  "aggregation": {
+    "media": "(a_1 + ... + a_R) / R",
+    "desvio": "desvio padrão amostral com ddof=1",
+    "media_mais_desvio": "media + desvio",
+    "split": "test"
+  },
+  "elapsed_seconds": 4.825616156999985,
+  "versions": {
+    "python": "3.13.18",
+    "numpy": "2.5.3",
+    "pandas": "3.0.5",
+    "scikit-learn": "1.9.1",
+    "matplotlib": "3.11.2"
+  }
+}

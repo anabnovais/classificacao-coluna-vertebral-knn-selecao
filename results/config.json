@@ -1,0 +1,65 @@
+{
+  "data_path": "vertebral_column.csv",
+  "data_sha256": "648335343fa5e44ea32efbaca7ac2d05f7c3fcbec6b8e716396ddd0b3093657c",
+  "n_rounds": 5,
+  "base_seed": 42,
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "train_ratio": 0.6,
+  "val_ratio": 0.2,
+  "test_ratio": 0.2,
+  "quick": false,
+  "n_neighbors_grid": [
+    1,
+    3,
+    5,
+    7,
+    9,
+    11,
+    13,
+    15,
+    17,
+    19,
+    21
+  ],
+  "weights_grid": [
+    "uniform",
+    "distance"
+  ],
+  "metric_grid": [
+    "euclidean",
+    "manhattan"
+  ],
+  "default_knn": {
+    "n_neighbors": 5,
+    "weights": "uniform",
+    "metric": "euclidean",
+    "scale": true
+  },
+  "positive_class": 1,
+  "positive_class_name": "anormal",
+  "selection_rule": [
+    "maior F1 macro na validação",
+    "empate: maior recall da classe anormal",
+    "novo empate: menor n_neighbors, depois weights=uniform, depois metric=euclidean"
+  ],
+  "aggregation": {
+    "media": "(a_1 + ... + a_R) / R",
+    "desvio": "desvio padrão amostral com ddof=1 (divisor R-1; com R=5, divisor 4)",
+    "media_mais_desvio": "media + desvio",
+    "split": "test"
+  },
+  "elapsed_seconds": 3.0925235000031535,
+  "versions": {
+    "python": "3.12.10",
+    "numpy": "2.5.4",
+    "pandas": "3.0.6",
+    "scikit-learn": "1.9.1",
+    "matplotlib": "3.11.2"
+  }
+}
